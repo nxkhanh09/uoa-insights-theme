@@ -1,0 +1,110 @@
+## mako
+<%!
+  from django.utils.translation import ugettext as _
+%>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/main.html" />
+
+<%block name="title"><title>${_('About')}</title></%block>
+
+<%block name="js_extra">
+  <script type="text/javascript">
+    $(function() {
+      $('section.message').hide();
+      $('#about-menu a').removeClass('active');
+      window.scrollTo(0,0);
+      var hash = window.location.hash
+
+      if (hash) {
+        $('section' + hash).show();
+        $('#about-menu a.' + hash.substring(1)).addClass('active');
+      } else {
+        $('section#about').show();
+        $('#about-menu a.about').addClass('active');
+      }
+
+      $('#about-menu a').click(function(event) {
+        event.preventDefault();
+        $('#about-menu a').removeClass('active');
+        $(this).addClass('active');
+        var clickId = "section" + $(this).attr('href');
+        $('section.message').hide();
+        $(clickId).show();
+      });
+    });
+  </script>
+</%block>
+
+<section class="container about" style="width: auto;">
+  <nav id="about-menu">
+    <a href="#about" class="about active">${_('About')}</a>
+    <a href="#opp" class="opp">${_('Opportunities')}</a>
+    <a href="#contact" class="contact">${_('Contact')}</a>
+  </nav>
+
+  <section class="vision">
+
+## About Section ##
+    <section class="message left" id="about">
+      <div class="photo">
+        <!--
+            Photo License: CC0 Public Domain (Free for commercial use / No attribution required)
+            https://pixabay.com/en/book-books-circle-curly-education-2869/
+        -->
+        <img src="${static.url('images/uoabanner.jpg')}" alt="" />
+      </div>
+      <article>
+        <h2>${_('About')}</h2>
+
+        <p>We, Dr Lesley Gardner, Dr Don Sheridan, and the PhD student, Andy Nguyen, are researchers at the University of Auckland Business School.</p>
+	<p>AucklandInsights aims to propose and implement conceptual and system artefacts to apply learning analytics in the Higher Education domain.</p>
+	<p>This project also seeks to explore the multi-stakeholders' perspectives on the implementation and use of learning analytics and understand the impact of learning analytics on learning and teaching.</p>
+
+        <p>&nbsp;</p>
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+## Opportunities Section ##
+    <section class="message left" id="opp">
+      <div class="photo">
+        <!--
+            Photo License: CC0 Public Domain (Free for commercial use / No attribution required)
+            https://pixabay.com/en/man-corporate-businessman-suit-tie-871960/
+        -->
+        <img src="${static.url('images/2000px-Collaboration_logo_V2.svg.png')}" alt="" />
+      </div>
+      <article>
+        <h2>${_('Opportunities')}</h2>
+
+        <p>At this point in our research we are seeking lecturers to participate along with the students enrolled in their courses.</p>
+	<p>There are two steps in seeking participants. First the lecturer is willing to participate and involve a course s/he is teaching. Second, students in the lecturer's course will be invited to participate on an entirely volunteer basis. </p>
+
+        <p>&nbsp;</p>
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+## Contact Section ##
+    <section class="message left" id="contact">
+      <div class="photo">
+        <!--
+            Photo License: CC0 Public Domain (Free for commercial use / No attribution required)
+            https://pixabay.com/en/network-cobweb-dewdrop-586177/
+        -->
+        <img src="${static.url('images/i-clocktower-palm.jpg')}" alt="" />
+      </div>
+      <article id="AucklandInsights-contact">
+        <h2>${_('Contact Us')}</h2>
+
+        <p>Associate Professor Don Sheridan <br/>-- Email: d.sheridan@auckland.ac.nz</p>
+	<p>Associate Professor Lesley Ann Gardner <br/>-- Email: l.gardner@auckland.ac.nz</p>
+	<p>Mr. Andy Nguyen <br/>-- Email: a.nguyen@auckland.ac.nz</p>
+        <p>&nbsp;</p>
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+  </section>
+
+</section>

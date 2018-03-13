@@ -1,0 +1,28 @@
+## mako
+<%!
+  from django.utils.translation import ugettext as _
+%>
+<%inherit file="/main.html" />
+
+<%block name="title"><title>${_('Terms of Service')}</title></%block>
+
+<section class="static-container tos">
+<br/><br/>
+    <h2 id="privacy">${_('Privacy Policy - Terms of Service')}</h2>
+</p> <p>Any electronic data collected will be stored securely on the university hard drive. The hard drive will be protected by password which is only known by researcher. A backup copy will be stored on a password protected USB drive under the control of the researcher. The findings of this study will be used for the PhD thesis and for publication purposes. All data from the university hard drive and USB drive will be destroyed by securely erasing the files six years after completion of the research.
+The data will be used to support PhD research and any peer reviewed publications resulting from it.</p>
+<p>All responses and data collected will remain completely anonymous. The details are provided in the Participant Information Sheet and Consent Form for individual participants and organizations. Student's data from the LMS 'gradebook'must be sanitised / rendered anonymous by a trusted third-party. Student' data, essentially secondary data from the use of the LMS, in the course of learning and teaching processes, also needs to be rendered anonymous by the same trusted third party to ensure the individual's data from different sources is correctly matched up. The trusted third party could be the manager of the B&E digital services unit if that is satisfactory with the Ethics Committe
+<br/>
+<br/>
+</section>
+
+<script>
+    $(document).ready(function() {
+        var print_tos = '<input type="button" value="Print Terms of Service" class="print">';
+        $('#content section.tos').prepend(print_tos).append(print_tos);
+        $('#content section.tos input.print').click(function() {
+            window.print();
+            return false;
+        });
+    });
+</script>

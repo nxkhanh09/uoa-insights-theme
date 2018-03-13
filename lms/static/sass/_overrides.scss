@@ -1,0 +1,15 @@
+.course-index {
+	max-width: 300px; 
+	margin-left:2px;
+	position: fixed;
+	z-index: 99;
+}
+
+@media screen and (max-width: 1700px) {
+	.course-index {
+		max-width: 300px; 
+		margin-left:2px;
+		position: fixed;
+		z-index: -99;
+	}
+}
